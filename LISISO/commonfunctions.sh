@@ -7,27 +7,19 @@
 GetDistroName()
 {
 	linuxString=$(grep -ihs "CentOS\|Red Hat Enterprise Linux" /etc/redhat-release)
-
 	case $linuxString in
-		*CentOS*)
-			distro_name=CentOS
-			;;
-		*Red*)
-			distro_name=RHEL
-			;;
-		*Oracle*)
-                        distro_name=Oracle
+                *CentOS* | *Red* | *Oracle*)
+                        distro_name=LIS
+                        echo $distro_name
                         ;;
-
-		*)
-			distro_name=unknown
-			return 1
-			;;
-	esac
+                *)
+                        distro_name=unknown
+                        return 1
+                        ;;
+        esac
 
 	return 0
 }
-
 
 #
 # The grouping of the regular expression using () will
