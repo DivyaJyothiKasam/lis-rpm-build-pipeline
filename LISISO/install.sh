@@ -59,23 +59,19 @@ source commonfunctions.sh
 # This is important because kmod are dependent on Kernel version
 
 GetDistroName
-echo "divya $distro_name"
 if [ $distro_name = "unknown" ]; then
     echo "Unsupported Linux distribution"
     exit 1
 fi
 
 GetDistroVersion
-echo "divya $distro_version"
 if [ $distro_version = "unknown" ]; then
     echo "Unsupported kernel version"
     exit 1
 fi
 
-
 OracleDistroName=$(grep -ihs "Orac" /etc/oracle-release)
 OracleDistroVersion=[52,53,54,55,56,57,58,59,510,511,60,61,62,63]
-
 case $OracleDistroName in
                 *Oracle*)
 			if [[ ${OracleDistroVersion[*]} =~ $distro_version ]] ; then
@@ -98,7 +94,6 @@ if [[ $distro_version != "5"* ]]; then
 fi
 
 targetDir="${distro_name}${distro_version}"
-echo "divya target directory is $targetDir"
 
 if [ ! -e "./${targetDir}" ]; then
 	echo "The distribution specific directory '${targetDir}' does not exist"

@@ -69,18 +69,16 @@ fi
 
 OracleDistroName=$(grep -ihs "Orac" /etc/oracle-release)
 OracleDistroVersion=[52,53,54,55,56,57,58,59,510,511,60,61,62,63]
-
 case $OracleDistroName in
-                *Oracle*)
-			if [[ ${OracleDistroVersion[*]} =~ $distro_version ]] ; then
-		        	echo "installation is not supoorted"
-			        exit 1
-			        echo "done testing"
-			else
-			        echo "installation is supported"
-			fi
-                        ;;
-                *)
+	*Oracle*)
+	if [[ ${OracleDistroVersion[*]} =~ $distro_version ]] ; then
+	 	echo "Upgrade is not supoorted"
+	        exit 1
+	else
+	        echo "upgrade is supported"
+	fi
+	;;
+        *)
 esac
 
 targetDir="${distro_name}${distro_version}"

@@ -9,8 +9,7 @@ GetDistroName()
 	linuxString=$(grep -ihs "CentOS\|Red Hat Enterprise Linux" /etc/redhat-release)
 	case $linuxString in
                 *CentOS* | *Red* | *Oracle*)
-                        distro_name=LIS
-                        echo $distro_name
+                        distro_name=RPMS
                         ;;
                 *)
                         distro_name=unknown
