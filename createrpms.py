@@ -20,7 +20,7 @@ def run(cmd):
 
 def updatebuildname(path, buildname):
  regex='microsoft-hyper-v-kmod ='
-
+ print "buildname is " +buildname
  file_list = []
  linetosearch =[]
  for file in os.listdir(path):
@@ -37,6 +37,11 @@ def updatebuildname(path, buildname):
      currentversion = linetosearch[-1].strip('\n')
   cmdstring = "sed -i 's/%s/%s/g' %s" % (currentversion,buildname, file)
   run(cmdstring)
+#  sed -i "s/#define HV_DRV_VERSION\t".*"/#define HV_DRV_VERSION\t"$name"/g" hv_compat.h
+  print "source is" +source
+  print "buildname is " +buildname
+ # sed -i "s/#define HV_DRV_VERSION\t".*"/#define HV_DRV_VERSION\t"$buildname"/g" source/include/linux/hv_compat.h
+ run("bash run1.sh")
 
 def buildrhel5(branch, buildname,source):
  os.makedirs(directory)
